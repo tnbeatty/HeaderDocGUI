@@ -12,7 +12,8 @@
 		965BA4B113E761E90061F429 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4B013E761E90061F429 /* main.m */; };
 		965BA4B513E761E90061F429 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 965BA4B313E761E90061F429 /* Credits.rtf */; };
 		965BA4B813E761E90061F429 /* HeaderDocGUIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4B713E761E90061F429 /* HeaderDocGUIAppDelegate.m */; };
-		965BA4BB13E761E90061F429 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 965BA4B913E761E90061F429 /* MainMenu.xib */; };
+		965BA4C413E762130061F429 /* DrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4C213E762130061F429 /* DrawerController.m */; };
+		965BA4C513E762130061F429 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 965BA4C313E762130061F429 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +22,16 @@
 		965BA4A713E761E90061F429 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		965BA4A813E761E90061F429 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		965BA4A913E761E90061F429 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		965BA4AC13E761E90061F429 /* HeaderDocGUI-Info.plist */ = {isa = PBXFileReference; path = "HeaderDocGUI-Info.plist"; sourceTree = "<group>"; };
+		965BA4AC13E761E90061F429 /* HeaderDocGUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HeaderDocGUI-Info.plist"; sourceTree = "<group>"; };
 		965BA4AE13E761E90061F429 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		965BA4B013E761E90061F429 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		965BA4B213E761E90061F429 /* HeaderDocGUI-Prefix.pch */ = {isa = PBXFileReference; path = "HeaderDocGUI-Prefix.pch"; sourceTree = "<group>"; };
+		965BA4B213E761E90061F429 /* HeaderDocGUI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeaderDocGUI-Prefix.pch"; sourceTree = "<group>"; };
 		965BA4B413E761E90061F429 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		965BA4B613E761E90061F429 /* HeaderDocGUIAppDelegate.h */ = {isa = PBXFileReference; path = HeaderDocGUIAppDelegate.h; sourceTree = "<group>"; };
+		965BA4B613E761E90061F429 /* HeaderDocGUIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderDocGUIAppDelegate.h; sourceTree = "<group>"; };
 		965BA4B713E761E90061F429 /* HeaderDocGUIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderDocGUIAppDelegate.m; sourceTree = "<group>"; };
-		965BA4BA13E761E90061F429 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		965BA4C113E762130061F429 /* DrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerController.h; sourceTree = "<group>"; };
+		965BA4C213E762130061F429 /* DrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerController.m; sourceTree = "<group>"; };
+		965BA4C313E762130061F429 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +87,9 @@
 			children = (
 				965BA4B613E761E90061F429 /* HeaderDocGUIAppDelegate.h */,
 				965BA4B713E761E90061F429 /* HeaderDocGUIAppDelegate.m */,
-				965BA4B913E761E90061F429 /* MainMenu.xib */,
+				965BA4C113E762130061F429 /* DrawerController.h */,
+				965BA4C213E762130061F429 /* DrawerController.m */,
+				965BA4C313E762130061F429 /* MainMenu.xib */,
 				965BA4AB13E761E90061F429 /* Supporting Files */,
 			);
 			path = HeaderDocGUI;
@@ -128,6 +133,7 @@
 		965BA49713E761E90061F429 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = MiddPoint;
 			};
 			buildConfigurationList = 965BA49A13E761E90061F429 /* Build configuration list for PBXProject "HeaderDocGUI" */;
@@ -154,7 +160,7 @@
 			files = (
 				965BA4AF13E761E90061F429 /* InfoPlist.strings in Resources */,
 				965BA4B513E761E90061F429 /* Credits.rtf in Resources */,
-				965BA4BB13E761E90061F429 /* MainMenu.xib in Resources */,
+				965BA4C513E762130061F429 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +173,7 @@
 			files = (
 				965BA4B113E761E90061F429 /* main.m in Sources */,
 				965BA4B813E761E90061F429 /* HeaderDocGUIAppDelegate.m in Sources */,
+				965BA4C413E762130061F429 /* DrawerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,14 +194,6 @@
 				965BA4B413E761E90061F429 /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		965BA4B913E761E90061F429 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				965BA4BA13E761E90061F429 /* en */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
