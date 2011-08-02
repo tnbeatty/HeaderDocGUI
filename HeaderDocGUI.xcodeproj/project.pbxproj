@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9651F22913E7A95E00C2FB96 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9651F22813E7A95E00C2FB96 /* MainMenu.xib */; };
+		9651F22D13E7AABE00C2FB96 /* DocumentationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9651F22C13E7AABE00C2FB96 /* DocumentationManager.m */; };
+		9651F23613E7CEF500C2FB96 /* Play-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9651F23513E7CEF500C2FB96 /* Play-Icon.png */; };
 		965BA4A513E761E90061F429 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965BA4A413E761E90061F429 /* Cocoa.framework */; };
 		965BA4AF13E761E90061F429 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 965BA4AD13E761E90061F429 /* InfoPlist.strings */; };
 		965BA4B113E761E90061F429 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4B013E761E90061F429 /* main.m */; };
 		965BA4B513E761E90061F429 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 965BA4B313E761E90061F429 /* Credits.rtf */; };
-		965BA4B813E761E90061F429 /* HeaderDocGUIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4B713E761E90061F429 /* HeaderDocGUIAppDelegate.m */; };
 		965BA4C413E762130061F429 /* DrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4C213E762130061F429 /* DrawerController.m */; };
-		965BA4C513E762130061F429 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 965BA4C313E762130061F429 /* MainMenu.xib */; };
+		965BA4D813E7A38E0061F429 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4D713E7A38E0061F429 /* WindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9651F22813E7A95E00C2FB96 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		9651F22B13E7AABE00C2FB96 /* DocumentationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentationManager.h; sourceTree = "<group>"; };
+		9651F22C13E7AABE00C2FB96 /* DocumentationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentationManager.m; sourceTree = "<group>"; };
+		9651F23513E7CEF500C2FB96 /* Play-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Play-Icon.png"; sourceTree = "<group>"; };
 		965BA4A013E761E90061F429 /* HeaderDocGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeaderDocGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		965BA4A413E761E90061F429 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		965BA4A713E761E90061F429 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -27,11 +33,10 @@
 		965BA4B013E761E90061F429 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		965BA4B213E761E90061F429 /* HeaderDocGUI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeaderDocGUI-Prefix.pch"; sourceTree = "<group>"; };
 		965BA4B413E761E90061F429 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		965BA4B613E761E90061F429 /* HeaderDocGUIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderDocGUIAppDelegate.h; sourceTree = "<group>"; };
-		965BA4B713E761E90061F429 /* HeaderDocGUIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderDocGUIAppDelegate.m; sourceTree = "<group>"; };
 		965BA4C113E762130061F429 /* DrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerController.h; sourceTree = "<group>"; };
 		965BA4C213E762130061F429 /* DrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerController.m; sourceTree = "<group>"; };
-		965BA4C313E762130061F429 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		965BA4D613E7A38E0061F429 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
+		965BA4D713E7A38E0061F429 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +90,13 @@
 		965BA4AA13E761E90061F429 /* HeaderDocGUI */ = {
 			isa = PBXGroup;
 			children = (
-				965BA4B613E761E90061F429 /* HeaderDocGUIAppDelegate.h */,
-				965BA4B713E761E90061F429 /* HeaderDocGUIAppDelegate.m */,
+				965BA4D613E7A38E0061F429 /* WindowController.h */,
+				965BA4D713E7A38E0061F429 /* WindowController.m */,
+				9651F22B13E7AABE00C2FB96 /* DocumentationManager.h */,
+				9651F22C13E7AABE00C2FB96 /* DocumentationManager.m */,
 				965BA4C113E762130061F429 /* DrawerController.h */,
 				965BA4C213E762130061F429 /* DrawerController.m */,
-				965BA4C313E762130061F429 /* MainMenu.xib */,
+				9651F22813E7A95E00C2FB96 /* MainMenu.xib */,
 				965BA4AB13E761E90061F429 /* Supporting Files */,
 			);
 			path = HeaderDocGUI;
@@ -98,6 +105,7 @@
 		965BA4AB13E761E90061F429 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9651F23513E7CEF500C2FB96 /* Play-Icon.png */,
 				965BA4AC13E761E90061F429 /* HeaderDocGUI-Info.plist */,
 				965BA4AD13E761E90061F429 /* InfoPlist.strings */,
 				965BA4B013E761E90061F429 /* main.m */,
@@ -160,7 +168,8 @@
 			files = (
 				965BA4AF13E761E90061F429 /* InfoPlist.strings in Resources */,
 				965BA4B513E761E90061F429 /* Credits.rtf in Resources */,
-				965BA4C513E762130061F429 /* MainMenu.xib in Resources */,
+				9651F22913E7A95E00C2FB96 /* MainMenu.xib in Resources */,
+				9651F23613E7CEF500C2FB96 /* Play-Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,8 +181,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				965BA4B113E761E90061F429 /* main.m in Sources */,
-				965BA4B813E761E90061F429 /* HeaderDocGUIAppDelegate.m in Sources */,
 				965BA4C413E762130061F429 /* DrawerController.m in Sources */,
+				965BA4D813E7A38E0061F429 /* WindowController.m in Sources */,
+				9651F22D13E7AABE00C2FB96 /* DocumentationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +297,7 @@
 				965BA4C013E761E90061F429 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
