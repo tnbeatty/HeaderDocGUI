@@ -33,7 +33,6 @@
     self = [super initWithWindow:window];
     if (self) {
         // Initialization code
-        docManager = [[DocumentationManager alloc] init];
     }
     
     return self;
@@ -43,7 +42,8 @@
 {
     [super windowDidLoad];
     
-    docManager = [[DocumentationManager alloc] init];
+    [progressBar stopAnimation:nil];
+    [progressBar setDisplayedWhenStopped:NO];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
@@ -56,7 +56,7 @@
     [browser setCanChooseDirectories:YES];
     [browser setAllowsMultipleSelection:NO];
     [browser runModal];
-    inputURL = [[[browser URLs] objectAtIndex:0] absoluteString];
+    inputURL = [[[browser URLs] objectAtIndex:0] relativePath];
     inputTextField.stringValue = inputURL;
     NSLog(@"URL: %@", inputURL);
 }
@@ -67,7 +67,7 @@
     [browser setCanChooseDirectories:YES];
     [browser setAllowsMultipleSelection:NO];
     [browser runModal];
-    outputURL = [[[browser URLs] objectAtIndex:0] absoluteString];
+    outputURL = [[[browser URLs] objectAtIndex:0] relativePath];
     outputTextField.stringValue = outputURL;
     NSLog(@"URL: %@", outputURL);
 }
@@ -92,15 +92,9 @@
 
 -(void)createDocumentation {
     NSLog(@"Create Doc Called");
-//    if (createSubDirectoryCheckbox.state == NSOnState) {
-//        outputURL = [outputURL stringByAppendingPathComponent:@"Documentation"];
-//    }
-    // Create documentation
-    [docManager documentDirectory:inputURL toDirectory:outputURL];
-    // Create MasterTOC if necessary
-    if (createMasterTOCCheckbox.state == NSOnState) {
-        [docManager createMasterTOCInDirectory:outputURL];
-    }
+    DocumentationManager *docsManager = [DocumentationManager documentationManagerWithInputDirectory:inputURL outputDirectory:outputURL];
+    [docsManager execute];
+    docsManager = nil;
 }
 
 - (NSToolbarItem *)toolbarItemWithIdentifier:(NSString *)identifier

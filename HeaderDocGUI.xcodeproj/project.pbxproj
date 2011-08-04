@@ -16,6 +16,8 @@
 		965BA4B513E761E90061F429 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 965BA4B313E761E90061F429 /* Credits.rtf */; };
 		965BA4C413E762130061F429 /* DrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4C213E762130061F429 /* DrawerController.m */; };
 		965BA4D813E7A38E0061F429 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4D713E7A38E0061F429 /* WindowController.m */; };
+		9689840F13E9D02D00E8C062 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9689840E13E9D02D00E8C062 /* icon.png */; };
+		9689841213E9DB4600E8C062 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9689841113E9DB4600E8C062 /* README.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		965BA4C213E762130061F429 /* DrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerController.m; sourceTree = "<group>"; };
 		965BA4D613E7A38E0061F429 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		965BA4D713E7A38E0061F429 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
+		9689840E13E9D02D00E8C062 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		9689841113E9DB4600E8C062 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		965BA49513E761E90061F429 = {
 			isa = PBXGroup;
 			children = (
+				9689841113E9DB4600E8C062 /* README.txt */,
+				9689840E13E9D02D00E8C062 /* icon.png */,
 				965BA4AA13E761E90061F429 /* HeaderDocGUI */,
 				965BA4A313E761E90061F429 /* Frameworks */,
 				965BA4A113E761E90061F429 /* Products */,
@@ -170,6 +176,8 @@
 				965BA4B513E761E90061F429 /* Credits.rtf in Resources */,
 				9651F22913E7A95E00C2FB96 /* MainMenu.xib in Resources */,
 				9651F23613E7CEF500C2FB96 /* Play-Icon.png in Resources */,
+				9689840F13E9D02D00E8C062 /* icon.png in Resources */,
+				9689841213E9DB4600E8C062 /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +238,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -242,7 +250,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -251,7 +259,8 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -274,6 +283,7 @@
 				GCC_PREFIX_HEADER = "HeaderDocGUI/HeaderDocGUI-Prefix.pch";
 				INFOPLIST_FILE = "HeaderDocGUI/HeaderDocGUI-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

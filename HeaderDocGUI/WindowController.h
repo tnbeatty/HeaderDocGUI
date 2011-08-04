@@ -10,7 +10,6 @@
 #import "DocumentationManager.h"
 
 @interface WindowController : NSWindowController {
-    DocumentationManager *docManager;
     
     IBOutlet NSToolbar *toolbar;
     
@@ -19,6 +18,8 @@
     
     IBOutlet NSButton *createSubDirectoryCheckbox;
     IBOutlet NSButton *createMasterTOCCheckbox;
+    
+    IBOutlet NSProgressIndicator *progressBar;
     
     NSString *inputURL;
     NSString *outputURL;

@@ -16,27 +16,52 @@
 
 @implementation DocumentationManager
 
+@synthesize createDocumentationInSubDirectory;
+@synthesize buildTOC;
+@synthesize inputDirectory;
+@synthesize outputDirectory;
+
 - (id)init
 {
     self = [super init];
     if (self) {
         // Initialization code here.
+        
+        // Set defaults
+        self.createDocumentationInSubDirectory = YES;
+        self.buildTOC = YES;
     }
     
     return self;
 }
 
--(void)documentDirectory:(NSString *)inputDirectory toDirectory:(NSString *)outputDirectory {
-    NSLog(@"Run Document Directory Called");
-    [self executeCommand:@"headerdoc2html" withArguments:[NSArray arrayWithObjects: @"-o", outputDirectory, inputDirectory, nil]];
-}
-
--(void)createMasterTOCInDirectory:(NSString*)directory {
-    [self executeCommand:@"gatherheaderdoc" withArguments:[NSArray arrayWithObjects: directory, nil]];
++(DocumentationManager *)documentationManagerWithInputDirectory:(NSString *)inDirectory outputDirectory:(NSString *)outDirectory {
+    DocumentationManager *docManager = [[DocumentationManager alloc] init];
+    
+    // Set directories according to method args
+    docManager.inputDirectory = inDirectory;
+    docManager.outputDirectory = outDirectory;
+    
+    return docManager;
 }
 
 -(void)execute {
-    [self executeCommand:@"open" withArguments:[NSArray arrayWithObjects: @"/users/tnbeatty/desktop", nil]];
+    // only execute if given a valid input and output directory
+    if (inputDirectory && outputDirectory) {
+        //[self executeCommand:@"open" withArguments:[NSArray arrayWithObjects: @"/users/tnbeatty/desktop", nil]];
+        // New local output directory
+        NSString *outputDirLocal = outputDirectory;
+        
+        if (createDocumentationInSubDirectory) {
+            outputDirLocal = [outputDirectory stringByAppendingPathComponent:@"Documentation"];
+        }
+        
+        [self executeCommand:@"headerdoc2html" withArguments:[NSArray arrayWithObjects: @"-o", outputDirLocal, inputDirectory, nil]];
+        
+        if (buildTOC) {
+            [self executeCommand:@"gatherheaderdoc" withArguments:[NSArray arrayWithObjects: outputDirectory, nil]];
+        }
+    }
 }
 
 @end
@@ -46,8 +71,9 @@
 -(NSString *)executeCommand:(NSString *)command withArguments:(NSArray *)arguments {
     NSTask *task;
     task = [[NSTask alloc] init];
+
     [task setLaunchPath: [@"/usr/bin" stringByAppendingPathComponent:command]];
-    
+
     [task setArguments: arguments];
     
     NSPipe *pipe;
