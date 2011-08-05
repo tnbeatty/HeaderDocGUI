@@ -19,7 +19,7 @@
 
 /*!
  @protocol DocumentationManagerDelegate
- @discussion This protocol is mostly used for error handling.
+ @abstract This protocol is mostly used for error handling.
  */
 @protocol DocumentationManagerDelegate <NSObject>
 @required
@@ -40,6 +40,14 @@
 -(void)someOtherError:(NSError *)error;
 
 @optional
+
+/*!
+ @method activityMonitorReturned:
+ @abstract Returns strings that are output from the execute method.
+ @discussion Use this method to display the execute output to the user. While it is impractical to attempt to parse or analyze the resulting text, it might be helpful to display on the screen.
+ */
+-(void)activityMonitorReturnedOutput:(NSString *)text;
+
 @end
 
 /*!
@@ -48,11 +56,18 @@
  @discussion A DocumentationManager is a mechanism for executing headerdoc commands. It includes functionality for working with both "headerdoc2html" and "gatherheaderdoc" command line tools and all available arguments.
  */
 @interface DocumentationManager : NSObject {
+    id delegate;
     BOOL createDocumentationInSubdirectory;
     BOOL buildTOC;
     NSString *inputDirectory;
     NSString *outputDirectory;
 }
+/*!
+ @property delegate
+ @abstract Delegate
+ @discussion delegate description
+ */
+@property (nonatomic,strong) id delegate;
 
 /*!
  @property createDocumentationInSubDirectory

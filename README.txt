@@ -1,9 +1,10 @@
+
 HeaderDocGUI README.txt
 ______________________
 
 **Built by Nate Beatty. 
-**http://natebeatty.com/headerdocgui
-**http://www.middlebury.edu/~tbeatty/headerdocgui
+**http://www.cs.middlebury.edu/~tnbeatty
+**http://www.cs.middlebury.edu/~tbeatty/projects/headerdocgui.php
 **Updated August, 2011
 
 This application is a GUI tool for documenting code using apple's HeaderDoc. To use this tool, you must have the command line tool "HeaderDoc 8.0" installed on your machine.

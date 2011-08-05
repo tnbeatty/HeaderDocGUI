@@ -16,14 +16,16 @@
 -(void)someOtherError:(NSError *)error;
 @end
 
-@interface WindowController (NSTextFieldDelegate) <NSTextFieldDelegate>
+@interface WindowController (NSDrawerDelegate) <NSDrawerDelegate>
 @end
 
-@interface WindowController (NSToolbarDelegate) <NSToolbarDelegate>
+@interface WindowController (NSTextFieldDelegate) <NSTextFieldDelegate>
 @end
 
 @interface WindowController (InternalMethods)
 -(void)createDocumentation;
+-(void)setupPresetsDrawer;
+-(void)setupActivityDrawer;
 @end
 
 @implementation WindowController
@@ -38,14 +40,14 @@
     return self;
 }
 
-- (void)windowDidLoad
-{
-    [super windowDidLoad];
+- (void)awakeFromNib {
+    // Create drawers
+    [self setupPresetsDrawer];
+    [self setupActivityDrawer];
     
+    // Set initial progress bar stati
     [progressBar stopAnimation:nil];
     [progressBar setDisplayedWhenStopped:NO];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 #pragma mark - Button Handling
@@ -77,14 +79,43 @@
     if (outputURL && inputURL) {
         [self createDocumentation];
     } else {
-        NSLog(@"You have not entered text!");
+        NSString *alertText = @"Please enter valid source and destination directories.";
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Invalid directories entered"
+                                         defaultButton:nil 
+                                       alternateButton:nil 
+                                           otherButton:nil 
+                             informativeTextWithFormat:alertText];
+        [alert runModal];
     }
 }
 
-//-(IBAction)drawerToggled:(id)sender {
-//    NSLog(@"Button Pressed");
-//    [docManager execute];
-//}
+-(IBAction)togglePresetsDrawer:(id)sender {
+    NSLog(@"Toggling Drawer");
+    NSDrawerState state = [presetsDrawer state];
+    if (NSDrawerOpeningState == state || NSDrawerOpenState == state) {
+        NSLog(@"Closing Drawer");
+        [presetsDrawer close];
+    } else {
+        NSLog(@"Opening Drawer");
+        [presetsDrawer openOnEdge:NSMaxXEdge];
+    }
+}
+
+-(IBAction)toggleActivityDrawer:(id)sender {
+    NSLog(@"Toggling Drawer");
+    NSDrawerState state = [activityDrawer state];
+    if (NSDrawerOpeningState == state || NSDrawerOpenState == state) {
+        NSLog(@"Closing Drawer");
+        [activityDrawer close];
+    } else {
+        NSLog(@"Opening Drawer");
+        [activityDrawer openOnEdge:NSMinYEdge];
+    }
+}
+
+-(IBAction)addText:(id)sender {
+    [activityTextView insertText:@"Some Text"];
+}
 
 @end
 
@@ -93,54 +124,48 @@
 -(void)createDocumentation {
     NSLog(@"Create Doc Called");
     DocumentationManager *docsManager = [DocumentationManager documentationManagerWithInputDirectory:inputURL outputDirectory:outputURL];
+    docsManager.createDocumentationInSubDirectory = [createSubDirectoryCheckbox state];
+    docsManager.buildTOC = [createMasterTOCCheckbox state];
+    docsManager.delegate = self;
     [docsManager execute];
     docsManager = nil;
 }
 
-- (NSToolbarItem *)toolbarItemWithIdentifier:(NSString *)identifier
-                                       label:(NSString *)label
-                                 paleteLabel:(NSString *)paletteLabel
-                                     toolTip:(NSString *)toolTip
-                                      target:(id)target
-                                 itemContent:(id)imageOrView
-                                      action:(SEL)action
-                                        menu:(NSMenu *)menu
-{
-    // here we create the NSToolbarItem and setup its attributes in line with the parameters
-    NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:identifier];
-    
-    [item setLabel:label];
-    [item setPaletteLabel:paletteLabel];
-    [item setToolTip:toolTip];
-    [item setTarget:target];
-    [item setAction:action];
-    
-    // Set the right attribute, depending on if we were given an image or a view
-    if([imageOrView isKindOfClass:[NSImage class]]){
-        [item setImage:imageOrView];
-    } else if ([imageOrView isKindOfClass:[NSView class]]){
-        [item setView:imageOrView];
-    }else {
-        assert(!"Invalid itemContent: object");
-    }
-    
-    
-    // If this NSToolbarItem is supposed to have a menu "form representation" associated with it
-    // (for text-only mode), we set it up here.  Actually, you have to hand an NSMenuItem
-    // (not a complete NSMenu) to the toolbar item, so we create a dummy NSMenuItem that has our real
-    // menu as a submenu.
-    //
-    if (menu != nil)
-    {
-        // we actually need an NSMenuItem here, so we construct one
-        NSMenuItem *mItem = [[NSMenuItem alloc] init];
-        [mItem setSubmenu:menu];
-        [mItem setTitle:label];
-        [item setMenuFormRepresentation:mItem];
-    }
-    
-    return item;
+#pragma mark - Drawer Handling
+
+-(void)setupPresetsDrawer {
+    NSSize contentSize = NSMakeSize(100, 100);
+    presetsDrawer = [[NSDrawer alloc] initWithContentSize:contentSize preferredEdge:NSMaxXEdge];
+    [presetsDrawer setParentWindow:myParentWindow];
+    [presetsDrawer setDelegate:self];
+    [presetsDrawer setMinContentSize:contentSize];
+    [presetsDrawer setMaxContentSize:contentSize];
 }
+
+-(void)setupActivityDrawer {
+    NSSize contentSize = NSMakeSize(640, 200);
+    activityDrawer = [[NSDrawer alloc] initWithContentSize:contentSize preferredEdge:NSMinYEdge];
+    [activityDrawer setParentWindow:myParentWindow];
+    [activityDrawer setDelegate:self];
+    [activityDrawer setMaxContentSize:contentSize];
+    [activityDrawer setMinContentSize:contentSize];
+    
+    // Create Content
+    activityTextView = [[NSTextView alloc] initWithFrame:NSRectFromCGRect(CGRectMake(0, 0, 640, 200))];
+    //[activityTextView setAllowedInputSourceLocales:[NSArray arrayWithObjects: self, nil]];
+    //[activityTextView setSelectable:NO];
+    NSScrollView *scroll = [[NSScrollView alloc] initWithFrame:[activityDrawer.contentView frame]];
+    [scroll setBorderType:NSGrooveBorder];
+    [scroll setHasHorizontalScroller:NO];
+    [scroll setHasVerticalScroller:YES];
+    [scroll setDocumentView:activityTextView];
+    [[activityDrawer contentView] addSubview:scroll];
+}
+
+@end
+
+@implementation WindowController (NSDrawerDelegate)
+
 
 @end
 
@@ -155,39 +180,13 @@
 }
 
 -(void)someOtherError:(NSError *)error {
+    NSAlert *alert = [NSAlert alertWithError:error];
+    [alert runModal];
     
 }
 
-@end
-
-@implementation WindowController (NSToolbarDelegate)
-
-- (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag
-{
-    NSToolbarItem *toolbarItem = nil;
-    NSLog(@"Adding toolbar item");
-    if ([itemIdentifier isEqualToString:kPlayIconToolbarItemID]) {
-        toolbarItem = [self toolbarItemWithIdentifier:kPlayIconToolbarItemID
-                                                label:@"Run"
-                                          paleteLabel:@"Run"
-                                              toolTip:@"Run the Documentation Tool"
-                                               target:self
-                                          itemContent:[NSImage imageNamed:@"Play-Icon.png"]
-                                               action:@selector(runDocumentation:)
-                                                 menu:nil];
-    }  
-    
-    return toolbarItem;
-}
-
-- (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar
-{
-    return [NSArray arrayWithObjects: kPlayIconToolbarItemID, nil];
-}
-
-- (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar
-{
-    return [NSArray arrayWithObjects: kPlayIconToolbarItemID, nil];
+-(void)activityMonitorReturnedOutput:(NSString *)text {
+    [activityTextView insertText:text];
 }
 
 @end

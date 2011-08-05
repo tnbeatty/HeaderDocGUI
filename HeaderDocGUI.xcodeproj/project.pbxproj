@@ -18,6 +18,9 @@
 		965BA4D813E7A38E0061F429 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4D713E7A38E0061F429 /* WindowController.m */; };
 		9689840F13E9D02D00E8C062 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9689840E13E9D02D00E8C062 /* icon.png */; };
 		9689841213E9DB4600E8C062 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9689841113E9DB4600E8C062 /* README.txt */; };
+		96ADBFF513EC6CD1001F7096 /* Console-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96ADBFF413EC6CD1001F7096 /* Console-Icon.png */; };
+		96ADBFF813EC6D94001F7096 /* Terminal_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96ADBFF713EC6D94001F7096 /* Terminal_Icon.png */; };
+		96ADBFFA13EC6F0F001F7096 /* Stop-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96ADBFF913EC6F0F001F7096 /* Stop-Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		965BA4D713E7A38E0061F429 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		9689840E13E9D02D00E8C062 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		9689841113E9DB4600E8C062 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		96ADBFF413EC6CD1001F7096 /* Console-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Console-Icon.png"; sourceTree = "<group>"; };
+		96ADBFF713EC6D94001F7096 /* Terminal_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Terminal_Icon.png; sourceTree = "<group>"; };
+		96ADBFF913EC6F0F001F7096 /* Stop-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stop-Icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +117,7 @@
 		965BA4AB13E761E90061F429 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9651F23513E7CEF500C2FB96 /* Play-Icon.png */,
+				96ADBFFB13EC6F16001F7096 /* Icons */,
 				965BA4AC13E761E90061F429 /* HeaderDocGUI-Info.plist */,
 				965BA4AD13E761E90061F429 /* InfoPlist.strings */,
 				965BA4B013E761E90061F429 /* main.m */,
@@ -119,6 +125,17 @@
 				965BA4B313E761E90061F429 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96ADBFFB13EC6F16001F7096 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				96ADBFF913EC6F0F001F7096 /* Stop-Icon.png */,
+				9651F23513E7CEF500C2FB96 /* Play-Icon.png */,
+				96ADBFF713EC6D94001F7096 /* Terminal_Icon.png */,
+				96ADBFF413EC6CD1001F7096 /* Console-Icon.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +195,9 @@
 				9651F23613E7CEF500C2FB96 /* Play-Icon.png in Resources */,
 				9689840F13E9D02D00E8C062 /* icon.png in Resources */,
 				9689841213E9DB4600E8C062 /* README.txt in Resources */,
+				96ADBFF513EC6CD1001F7096 /* Console-Icon.png in Resources */,
+				96ADBFF813EC6D94001F7096 /* Terminal_Icon.png in Resources */,
+				96ADBFFA13EC6F0F001F7096 /* Stop-Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

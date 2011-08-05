@@ -10,12 +10,13 @@
 
 @interface DocumentationManager (InternalMethods)
 
--(NSString *)executeCommand:(NSString *)command withArguments:(NSArray *)arguments;
+-(void)executeCommand:(NSString *)command withArguments:(NSArray *)arguments;
 
 @end
 
 @implementation DocumentationManager
 
+@synthesize delegate;
 @synthesize createDocumentationInSubDirectory;
 @synthesize buildTOC;
 @synthesize inputDirectory;
@@ -68,7 +69,12 @@
 
 @implementation DocumentationManager (InternalMethods)
 
--(NSString *)executeCommand:(NSString *)command withArguments:(NSArray *)arguments {
+-(void)executeCommand:(NSString *)command withArguments:(NSArray *)arguments {
+    // Executing Task
+    if ([self.delegate respondsToSelector:@selector(activityMonitorReturnedOutput:)]) {
+        [self.delegate activityMonitorReturnedOutput:@"\nExecuting Task...\n"];
+    }
+    
     NSTask *task;
     task = [[NSTask alloc] init];
 
@@ -90,9 +96,11 @@
     
     NSString *string;
     string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-    NSLog (@"headerdoc2html returned:\n%@", string);
     
-    return string;
+    // Output results
+    if ([self.delegate respondsToSelector:@selector(activityMonitorReturnedOutput:)]) {
+        [self.delegate activityMonitorReturnedOutput:string];
+    }
 }
 
 @end

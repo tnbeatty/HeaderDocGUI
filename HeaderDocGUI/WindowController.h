@@ -11,7 +11,7 @@
 
 @interface WindowController : NSWindowController {
     
-    IBOutlet NSToolbar *toolbar;
+    IBOutlet NSWindow *myParentWindow;
     
     IBOutlet NSControl *inputTextField;
     IBOutlet NSControl *outputTextField;
@@ -23,12 +23,23 @@
     
     NSString *inputURL;
     NSString *outputURL;
+    
+    // Drawers
+    // Preset Drawer
+    NSDrawer *presetsDrawer;
+    // Preset Drawer Content
+    
+    // Activity Drawer
+    NSDrawer *activityDrawer;
+    // Activity Drawer Content
+    NSTextView *activityTextView;
 }
 
 -(IBAction)displaySourceBrowser:(id)sender;
 -(IBAction)displayDestinationBrowser:(id)sender;
 -(IBAction)runDocumentation:(id)sender;
 
-//-(IBAction)drawerToggled:(id)sender;
+-(IBAction)togglePresetsDrawer:(id)sender;
+-(IBAction)toggleActivityDrawer:(id)sender;
 
 @end
