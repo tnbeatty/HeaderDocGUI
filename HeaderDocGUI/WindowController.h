@@ -16,10 +16,14 @@
     IBOutlet NSControl *inputTextField;
     IBOutlet NSControl *outputTextField;
     
+    // Required Options
     IBOutlet NSButton *createSubDirectoryCheckbox;
     IBOutlet NSButton *createMasterTOCCheckbox;
     
     IBOutlet NSProgressIndicator *progressBar;
+    
+    // Optional Argument Outlets
+    IBOutlet NSMatrix *outputFormat;
     
     NSString *inputURL;
     NSString *outputURL;

@@ -108,8 +108,16 @@
 /*!
  @method execute
  @abstract Creates the HeaderDoc documentation using the object's properties.
- @discussion This is a discussion of the execute method
+ @discussion Calls an internal "execute command" method with "headerdoc2html" and DocumentationManager object's arguments. Adds the documentation sub directory onto the output string if createDocumentationInSubDirectory == YES and calls gatherheaderdoc in the output directory if buildTOC == YES.
  */
 -(void)execute;
+
+/*!
+ @method executeWithArguments:
+ @abstract Same as execute but with additional special arguments
+ @discussion See "execute." Calls execute with an array of special arguments along with the "headerdoc2html" command.
+ @param arguments An array of optional headerdoc2html arguments
+ */
+-(void)executeWithArguments:(NSArray *)arguments;
 
 @end

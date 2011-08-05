@@ -65,6 +65,24 @@
     }
 }
 
+-(void)executeWithArguments:(NSArray *)arguments {
+    if (inputDirectory && outputDirectory) {
+        //[self executeCommand:@"open" withArguments:[NSArray arrayWithObjects: @"/users/tnbeatty/desktop", nil]];
+        // New local output directory
+        NSString *outputDirLocal = outputDirectory;
+        
+        if (createDocumentationInSubDirectory) {
+            outputDirLocal = [outputDirectory stringByAppendingPathComponent:@"Documentation"];
+        }
+        
+        [self executeCommand:@"headerdoc2html" withArguments:[[NSArray arrayWithObjects: @"-o", outputDirLocal, inputDirectory, nil] arrayByAddingObjectsFromArray:arguments]];
+        
+        if (buildTOC) {
+            [self executeCommand:@"gatherheaderdoc" withArguments:[NSArray arrayWithObjects: outputDirectory, nil]];
+        }
+    }
+}
+
 @end
 
 @implementation DocumentationManager (InternalMethods)

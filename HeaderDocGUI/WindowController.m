@@ -26,6 +26,7 @@
 -(void)createDocumentation;
 -(void)setupPresetsDrawer;
 -(void)setupActivityDrawer;
+-(NSArray *)gatherAdditionalArguments;
 @end
 
 @implementation WindowController
@@ -113,13 +114,19 @@
     }
 }
 
--(IBAction)addText:(id)sender {
-    [activityTextView insertText:@"Some Text"];
-}
-
 @end
 
 @implementation WindowController (InternalMethods)
+
+-(NSArray *)gatherAdditionalArguments {
+    NSMutableArray *args = [[NSMutableArray alloc] init];
+    if (outputFormat.selectedRow == 1) {
+        [createMasterTOCCheckbox setState:NSOffState];
+        NSLog(@"XML Selected");
+        [args addObject:@"-X"];
+    }
+    return args;
+}
 
 -(void)createDocumentation {
     NSLog(@"Create Doc Called");
@@ -127,7 +134,14 @@
     docsManager.createDocumentationInSubDirectory = [createSubDirectoryCheckbox state];
     docsManager.buildTOC = [createMasterTOCCheckbox state];
     docsManager.delegate = self;
-    [docsManager execute];
+    NSArray *optionalArgs = [self gatherAdditionalArguments];
+    if (optionalArgs.count > 0) {
+        NSLog(@"Executing with Options");
+        [docsManager executeWithArguments:optionalArgs];
+    } else {
+        NSLog(@"Executing without Options");
+        [docsManager execute];
+    }
     docsManager = nil;
 }
 
