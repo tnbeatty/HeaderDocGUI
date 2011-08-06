@@ -60,7 +60,7 @@
         [self executeCommand:@"headerdoc2html" withArguments:[NSArray arrayWithObjects: @"-o", outputDirLocal, inputDirectory, nil]];
         
         if (buildTOC) {
-            [self executeCommand:@"gatherheaderdoc" withArguments:[NSArray arrayWithObjects: outputDirectory, nil]];
+            [self executeCommand:@"gatherheaderdoc" withArguments:[NSArray arrayWithObjects: outputDirLocal, nil]];
         }
     }
 }
@@ -81,7 +81,7 @@
         [self executeCommand:@"headerdoc2html" withArguments:combinedArguments];
         
         if (buildTOC) {
-            [self executeCommand:@"gatherheaderdoc" withArguments:[NSArray arrayWithObjects: outputDirectory, nil]];
+            [self executeCommand:@"gatherheaderdoc" withArguments:[NSArray arrayWithObjects: outputDirLocal, nil]];
         }
     }
 }
