@@ -21,9 +21,17 @@
     IBOutlet NSButton *createMasterTOCCheckbox;
     
     IBOutlet NSProgressIndicator *progressBar;
+    IBOutlet NSTextField *progressText;
     
     // Optional Argument Outlets
+    // Semioptional
     IBOutlet NSMatrix *outputFormat;
+    // Optional
+    IBOutlet NSButton *processEverythingBox;
+    IBOutlet NSButton *functionListOutputBox;
+    IBOutlet NSButton *unsortedBox;
+    IBOutlet NSButton *doxytagsBox;
+    IBOutlet NSButton *suppressLocalVariablesBox;
     
     NSString *inputURL;
     NSString *outputURL;

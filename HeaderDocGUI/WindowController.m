@@ -75,6 +75,8 @@
     NSLog(@"URL: %@", outputURL);
 }
 
+#pragma mark - Toolbar Button Handling
+
 -(IBAction)runDocumentation:(id)sender {
     NSLog(@"Run Doc Called");
     if (outputURL && inputURL) {
@@ -124,6 +126,21 @@
         [createMasterTOCCheckbox setState:NSOffState];
         NSLog(@"XML Selected");
         [args addObject:@"-X"];
+    }
+    if ([processEverythingBox state] == NSOnState) {
+        [args addObject:@"-E"];
+    }
+    if ([functionListOutputBox state] == NSOnState) {
+        [args addObject:@"-f"];
+    }
+    if ([unsortedBox state] == NSOnState) {
+        [args addObject:@"-u"];
+    }
+    if ([doxytagsBox state] == NSOnState) {
+        [args addObject:@"-x"];
+    }
+    if ([suppressLocalVariablesBox state] == NSOnState) {
+        [args addObject:@"-L"];
     }
     return args;
 }

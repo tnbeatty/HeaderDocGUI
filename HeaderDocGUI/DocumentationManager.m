@@ -66,6 +66,7 @@
 }
 
 -(void)executeWithArguments:(NSArray *)arguments {
+    // only execute if given a valid input and output directory
     if (inputDirectory && outputDirectory) {
         //[self executeCommand:@"open" withArguments:[NSArray arrayWithObjects: @"/users/tnbeatty/desktop", nil]];
         // New local output directory
@@ -74,8 +75,10 @@
         if (createDocumentationInSubDirectory) {
             outputDirLocal = [outputDirectory stringByAppendingPathComponent:@"Documentation"];
         }
-        
-        [self executeCommand:@"headerdoc2html" withArguments:[[NSArray arrayWithObjects: @"-o", outputDirLocal, inputDirectory, nil] arrayByAddingObjectsFromArray:arguments]];
+        NSArray *standardArguments = [NSArray arrayWithObjects:@"-o", outputDirLocal, inputDirectory, nil];
+        NSArray *combinedArguments = [arguments arrayByAddingObjectsFromArray:standardArguments];
+        NSLog(@"Arguments: %@", combinedArguments);
+        [self executeCommand:@"headerdoc2html" withArguments:combinedArguments];
         
         if (buildTOC) {
             [self executeCommand:@"gatherheaderdoc" withArguments:[NSArray arrayWithObjects: outputDirectory, nil]];
@@ -90,7 +93,7 @@
 -(void)executeCommand:(NSString *)command withArguments:(NSArray *)arguments {
     // Executing Task
     if ([self.delegate respondsToSelector:@selector(activityMonitorReturnedOutput:)]) {
-        [self.delegate activityMonitorReturnedOutput:@"\nExecuting Task...\n"];
+        [self.delegate activityMonitorReturnedOutput:[NSString stringWithFormat:@"\nExecuting Task...\n%@%@",command,arguments]];
     }
     
     NSTask *task;
@@ -113,7 +116,7 @@
     data = [fileHandle readDataToEndOfFile];
     
     NSString *string;
-    string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    string = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
     
     // Output results
     if ([self.delegate respondsToSelector:@selector(activityMonitorReturnedOutput:)]) {

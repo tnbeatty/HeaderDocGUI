@@ -45,8 +45,17 @@
  @method activityMonitorReturned:
  @abstract Returns strings that are output from the execute method.
  @discussion Use this method to display the execute output to the user. While it is impractical to attempt to parse or analyze the resulting text, it might be helpful to display on the screen.
+ @param text The text output meant to be shown in an activity monitor - the result of running a task.
  */
 -(void)activityMonitorReturnedOutput:(NSString *)text;
+
+/*!
+ @method updateProgress:
+ @abstract Called to let the delegate know what task is about to be performed
+ @discussion This method is called when a new task (like executing headerdoc2html or gatherheaderdoc) is about to be performed, and is then called once again when the task has been completed.
+ @param text A description of the pending task or completion status
+ */
+-(void)updateProgress:(NSString *)text;
 
 @end
 
