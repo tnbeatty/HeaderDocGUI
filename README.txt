@@ -1,6 +1,7 @@
-
 HeaderDocGUI README.txt
 ______________________
+
+This is an old project and is not maintained. For Apple-style documentation, I would recommend using AppleDoc by gentlebytes.
 
 **Built by Nate Beatty. 
 **http://www.cs.middlebury.edu/~tnbeatty
